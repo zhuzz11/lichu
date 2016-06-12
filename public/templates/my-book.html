@@ -1,0 +1,14 @@
+<ion-view view-title="心有所楚" ng-controller="MybookCtrl">
+	<ion-content>
+		<ion-list>
+			<ion-item ng-repeat="item in books" ng-click="gotoDetail(item)">
+			    <h2>{{item.title}}</h2>
+			    <p>{{item.content}}</p>
+			    <div class="bookdate">{{item.date | date:"yyyy-MM-dd HH:mm:ss"}}</div>
+			</ion-item>
+		</ion-list>
+	</ion-content>
+	<ion-footer-bar align-title="center" class="book-footer-bar" ng-click="gotoWrite()">
+		<div class="title">写篇日记吧!</div>
+	</ion-footer-bar>
+</ion-view>

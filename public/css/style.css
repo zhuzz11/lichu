@@ -1,0 +1,39 @@
+/* Empty. Add your own CSS if you like */
+.bookdate{
+	float: right;
+	font-size: 12px;
+	color: #ccc;
+}
+
+.book-footer-bar{
+	border-color: #b2b2b2;
+    background-color: #f8f8f8;
+    background-image: linear-gradient(0deg, #b2b2b2, #b2b2b2 50%, transparent 50%);
+    color: #444;
+}    
+
+.btn-write{
+	width: 100%;
+	height: 100%;
+	border: 1px solid #ccc;
+}
+
+.book-textarea{
+	padding: 6px 8px;
+	width: 100%;
+	min-height: 200px;
+	border: 1px solid #ccc;
+}
+.book-title{
+	padding:3px 6px;
+	width: 100%;
+	margin-bottom: 8px;
+	margin-top: 3px;
+}
+.btn-submit{
+	height: 25px;
+	float: right;
+	line-height: 23px;
+	min-height: 25px;
+	margin: 2px 3px 0 0;
+}
