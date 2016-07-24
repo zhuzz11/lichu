@@ -3,7 +3,7 @@ myApp
 .factory('$apis', function(){
   return {
     login:{
-      url:"/login",
+      url:"/users/login",
       method:"post"
     },
     getBooks:{

@@ -61,25 +61,22 @@ myApp
   });
 })
 
-.controller('loginCtrl', function($scope, $state, $http, $ionicLoading) {
+.controller('loginCtrl', function($scope, $state, $apis, $ionicLoading) {
   $scope.user = {
     name: "",
     pwd: ""
   };
   $scope.login = function() {
-    $http({
-      url: "/login",
-      method: "POST",
-      data: $scope.user
-    }).success(function(response) {
+    $apis.login.send(null,$scope.user).then(function(response){
       if (response.resultCode == "000") {
         $state.go('mybook');
       } else {
 
       }
-    }).error(function() {
+    },function(){
 
-    });
+    })
+    
   };
 })
 
