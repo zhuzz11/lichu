@@ -1,102 +1,87 @@
-angular.module('starter.controllers', [])
+myApp
 
-.controller('DashCtrl', function($scope) {})
+.controller('MybookCtrl', function($scope, $state, $http, $apis) {
 
-.controller('ChatsCtrl', function($scope, Chats) {
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
-
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
+  $scope.gotoWrite = function() {
+    $state.go('writeBook');
   };
-})
-
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
-})
-
-.controller('AccountCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
+  $scope.gotoDetail = function(item) {
+    $state.go('detailBook', {
+      bookId: item.id
+    });
   };
-})
 
 
-.controller('MybookCtrl',function($scope,$state,$http, Books){
-  //$scope.books = Books.all();
-  $http({
-    url:'/books',
-    method:'GET'
-  }).success(function(data,header,config,status){
-    //响应成功
+  $apis.getBooks.send(null, null).then(function(data) {
     console.log(data);
     $scope.books = data;
-  }).error(function(data,header,config,status){
-    //处理响应失败
+  }, function() {
     console.log("err=====");
   });
 
-  $scope.gotoWrite = function(){
-    $state.go('writeBook');
-  };
-  $scope.gotoDetail = function(item){
-    $state.go('detailBook',{data:item});
-  };
-
-
 })
 
-.controller('WritebookCtrl',function($scope,$state,$http,$ionicLoading){
+.controller('WritebookCtrl', function($scope, $state, $http, $apis) {
 
   $scope.books = {
-    bookcontent : "",
-    title:""
+    bookcontent: "",
+    title: ""
   };
-  
 
-  $scope.uploadbook = function(){
+
+  $scope.uploadbook = function() {
     // Setup the loader
-    $ionicLoading.show({
-      content: '正在上传...',
-      animation: 'fade-in',
-      showBackdrop: true,
-      maxWidth: 200,
-      showDelay: 0
-    });
-    var data = {
+    var body = {
       content: $scope.books.bookcontent,
-      name:"lichu",
-      title:$scope.books.title
+      name: "lichu",
+      title: $scope.books.title
     };
-    $http({
-      url:'/books/upload',
-      method:'POST',
-      data:data
-    }).success(function(){
-      $ionicLoading.hide();
-      $state.go('mybook');
-    }).error(function(){
+    $apis.uploadBook.send(null, body, "正在发表...").then(function(data) {
+      if (data.resultCode == "000") {
+        $state.go('mybook');
+      } else {
+
+      }
+
+    }, function() {
       alert("upload error");
     });
+  }
+
+})
+
+
+.controller('DetailbookCtrl', function($scope, $stateParams,$apis) {
+  var id = $stateParams.bookId;
+  console.log(id);
+  
+  $apis.getDetailBookbyId.send({id:id},null).then(function(data){
+       console.log(data);
+        $scope.item = data[0];
+  });
+})
+
+.controller('loginCtrl', function($scope, $state, $http, $ionicLoading) {
+  $scope.user = {
+    name: "",
+    pwd: ""
   };
+  $scope.login = function() {
+    $http({
+      url: "/login",
+      method: "POST",
+      data: $scope.user
+    }).success(function(response) {
+      if (response.resultCode == "000") {
+        $state.go('mybook');
+      } else {
 
+      }
+    }).error(function() {
 
+    });
+  };
 })
-
-
-.controller('DetailbookCtrl',function($scope,$stateParams){
-  var item = $stateParams.data;
-  console.log(item);
-  $scope.item = item;
-})
-
-
 
 
 

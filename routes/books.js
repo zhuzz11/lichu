@@ -5,7 +5,7 @@ var util = require("../tools/mysql-query");
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  util.query('select name,content,contents.date,title from contents,users where contents.userid = users.id order by contents.date desc').then(function(result){
+  util.query('select contents.id,name,content,contents.date,title from contents,users where contents.userid = users.id order by contents.date desc').then(function(result){
 
   	res.end(JSON.stringify(result));
   	console.log(result);
@@ -15,6 +15,18 @@ router.get('/', function(req, res, next) {
   
 });
 
+//get detaik book
+router.get('/:bookId', function(req, res, next) {
+	var id = req.params.bookId;
+  util.query('select name,content,contents.date,title from contents,users where contents.userid = users.id and contents.id = ' + id + ' order by contents.date desc').then(function(result){
+
+  	res.end(JSON.stringify(result));
+  	console.log(result);
+  },function(err){
+
+  });
+  
+});
 
 router.post('/upload',function(req,res){
 	console.log(JSON.stringify(req.body));
