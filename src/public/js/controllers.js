@@ -1,6 +1,6 @@
 myApp
 
-.controller('MybookCtrl', function($scope, $state, $http, $apis) {
+.controller('MybookCtrl', ['$scope', '$state', '$http', '$apis',function($scope, $state, $http, $apis) {
 
   $scope.gotoWrite = function() {
     $state.go('writeBook');
@@ -19,9 +19,9 @@ myApp
     console.log("err=====");
   });
 
-})
+}])
 
-.controller('WritebookCtrl', function($scope, $state, $http, $apis) {
+.controller('WritebookCtrl', ['$scope', '$state', '$http', '$apis',function($scope, $state, $http, $apis) {
 
   $scope.books = {
     bookcontent: "",
@@ -48,10 +48,10 @@ myApp
     });
   }
 
-})
+}])
 
 
-.controller('DetailbookCtrl', function($scope, $stateParams,$apis) {
+.controller('DetailbookCtrl', ['$scope', '$stateParams','$apis',function($scope, $stateParams,$apis) {
   var id = $stateParams.bookId;
   console.log(id);
   
@@ -59,9 +59,9 @@ myApp
        console.log(data);
         $scope.item = data[0];
   });
-})
+}])
 
-.controller('loginCtrl', function($scope, $state, $apis, $ionicLoading) {
+.controller('loginCtrl', ['$scope', '$state', '$apis', '$ionicLoading',function($scope, $state, $apis, $ionicLoading) {
   $scope.user = {
     name: "",
     pwd: ""
@@ -78,7 +78,7 @@ myApp
     })
     
   };
-})
+}])
 
 
 

@@ -5,7 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
+var index = require('./routes/index');
 var users = require('./routes/users');
 var books = require('./routes/books');
 
@@ -23,9 +23,9 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'dist')));
 
-app.use('/', routes);
+app.use('/', index);
 app.use('/users', users);
 app.use('/books', books);
 
@@ -68,7 +68,7 @@ var http = require('http');
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '80');
+var port = normalizePort(process.env.PORT || '8000');
 app.set('port', port);
 
 /**

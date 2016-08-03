@@ -36,3 +36,6 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
+
+# 忽略发布文件夹，不是源码
+src/dist
