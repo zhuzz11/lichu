@@ -5,6 +5,10 @@ angular.module('lichu').factory('apis', function(){
       url:"/users/login",
       method:"post"
     },
+    register:{
+      url:"/users/register",
+      method:"post"
+    },
     getBooks:{
       url:"/books",
       method:"get"

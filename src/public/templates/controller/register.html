@@ -1,0 +1,21 @@
+<ion-view view-title="注册" ng-controller="registerCtrl" style="background-color:#F5CCC1;">
+	<ion-content>
+		
+		<div class="login-logo">
+			<img src="">
+		</div>
+
+		<div class="login-box">
+			<input type="text" class="login-input bottom-border" ng-model="user.name" placeholder="账号"/>
+
+			<input type="password" class="login-input bottom-border" ng-model="user.pwd" placeholder="密码"/>
+
+			<input type="password" class="login-input" ng-model="user.confirm_pwd" placeholder="再次输入密码"/>
+
+			<input type="button" class="login-submit" ng-click="register()" value="注 册"/>
+		</div>
+		
+		
+	</ion-content>
+
+</ion-view>

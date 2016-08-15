@@ -17,6 +17,11 @@ angular.module("lichu").config(["$stateProvider", "$urlRouterProvider", function
     templateUrl: 'templates/controller/login.html'
   })
 
+  .state('register', {
+    url: '/register',
+    templateUrl: 'templates/controller/register.html'
+  })
+
   .state('writeBook', {
       url: '/writebook',
       cache: false,
