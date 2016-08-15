@@ -1,6 +1,5 @@
-myApp
 
-.factory('apiservice', ['apis','$http','$q','$ionicLoading',function(apis,$http,$q,$ionicLoading){
+angular.module("lichu").factory('apiservice', ['apis','$http','$q','$ionicLoading',function(apis,$http,$q,$ionicLoading){
 
 	var init = function(){
 		for(var i in apis){
