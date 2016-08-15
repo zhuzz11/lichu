@@ -1,10 +1,10 @@
 myApp
 
-.factory('$apiservice', ['$apis','$http','$q','$ionicLoading',function($apis,$http,$q,$ionicLoading){
+.factory('apiservice', ['apis','$http','$q','$ionicLoading',function(apis,$http,$q,$ionicLoading){
 
 	var init = function(){
-		for(var i in $apis){
-			$apis[i].send = send;
+		for(var i in apis){
+			apis[i].send = send;
 		}
 	};
 

@@ -1,6 +1,5 @@
-myApp
 
-.factory('$apis', function(){
+angular.module('lichu').factory('apis', function(){
   return {
     login:{
       url:"/users/login",
@@ -19,7 +18,4 @@ myApp
       method:"get"
     }
   }
-})
-
-
-;
+});
