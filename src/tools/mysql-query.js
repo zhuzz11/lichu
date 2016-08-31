@@ -4,7 +4,7 @@ var mysql = require("mysql");
 var Q = require('q');
 
 var config = {
-	host:"localhost",
+	host:"112.74.183.125",
 	port:"3306",
 	user:"zdm",
 	password:"199112",
@@ -38,9 +38,7 @@ module.exports = {
 		    	deferred.reject(err);
 		    	throw err;
 
-		    } 
-		    if(rows)
-				console.log('The solution is:== ', JSON.stringify(rows));
+		    }
 			deferred.resolve(rows);
 		    // Don't use the connection here, it has been returned to the pool.
 		 });
@@ -61,8 +59,6 @@ module.exports = {
 		    	throw err;
 
 		    }
-
-			console.log('The result is: ', result);
 			deferred.resolve(result);
 		    // Don't use the connection here, it has been returned to the pool.
 		 });
