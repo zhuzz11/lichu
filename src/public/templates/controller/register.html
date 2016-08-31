@@ -1,14 +1,14 @@
-<ion-view view-title="注册" ng-controller="registerCtrl" style="background-color:#F5CCC1;">
-	<ion-content>
+<ion-view view-title="注册" ng-controller="registerCtrl" class="lit-pink">
+	<div>
 		
 		<div class="login-logo">
 			<img src="">
 		</div>
 
 		<div class="login-box">
-			<input type="text" class="login-input bottom-border" ng-model="user.name" placeholder="账号"/>
+			<input type="text" class="login-input bottom-border" ng-model="user.name" placeholder="账号(1-10位长度)"/>
 
-			<input type="password" class="login-input bottom-border" ng-model="user.pwd" placeholder="密码"/>
+			<input type="password" class="login-input bottom-border" ng-model="user.pwd" placeholder="密码(6-15位数字、字母或特殊字符)"/>
 
 			<input type="password" class="login-input" ng-model="user.confirm_pwd" placeholder="再次输入密码"/>
 
@@ -16,6 +16,6 @@
 		</div>
 		
 		
-	</ion-content>
+	</div>
 
 </ion-view>
