@@ -23,7 +23,21 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'dist')));
+var session = require('express-session');
+app.use(session({
+  secret: "keyboard cat",
+  key: "12345",
+  cookie: {
+  secret: true,
+  expires: false
+  },
+  resave: true,
+  saveUninitialized: true
+}));
+//生产环境
+//app.use(express.static(path.join(__dirname, 'dist')));
+//dev 环境
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);

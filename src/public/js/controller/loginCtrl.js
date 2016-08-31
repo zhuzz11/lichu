@@ -4,7 +4,7 @@ angular.module("lichu").controller('loginCtrl', ['$scope', '$state', 'apis', '$i
     pwd: ""
   };
   $scope.login = function() {
-    apis.login.send(null,$scope.user).then(function(response){
+    apis.login.send(null,$scope.user,"正在登陆...").then(function(response){
       if (response.resultCode == "000") {
         $state.go('mybook');
       } else {

@@ -4,17 +4,17 @@ angular.module("lichu").controller('bookListCtrl', ['$scope', '$state', '$http',
     $state.go('writeBook');
   };
   $scope.gotoDetail = function(item) {
-    $state.go('detailBook', {
-      bookId: item.id
-    });
+    $state.go('detailBook');
   };
 
-
-  apis.getBooks.send(null, null).then(function(data) {
-    console.log(data);
-    $scope.books = data;
-  }, function() {
-    console.log("err=====");
-  });
+  var init = function(){
+    apis.getBooks.send(null, null).then(function(data) {
+      console.log(data);
+      $scope.books = data;
+    }, function() {
+      console.log("err=====");
+    });
+  }();
+  
 
 }]);

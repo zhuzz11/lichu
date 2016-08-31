@@ -5,8 +5,15 @@ var util = require("../tools/mysql-query");
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  util.query('select contents.id,name,content,contents.date,title from contents,users where contents.userid = users.id order by contents.date desc').then(function(result){
+	console.log("sesion:" + JSON.stringify(req.session));
+  if(!req.session.userInfo){
+  	res.end(JSON.stringify({resultCode:402,msg:"你没有访问权限。"}));
+  	return;
+  }
 
+  var userId = req.session ? req.session.userInfo.userId : "";
+  var sql = "select contents.id,content,contents.date,title from contents,users where contents.userid = "+ userId + " order by contents.date desc";
+  util.query(sql).then(function(result){
   	res.end(JSON.stringify(result));
   	console.log(result);
   },function(err){

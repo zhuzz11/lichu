@@ -10,6 +10,11 @@ router.post('/login', function(req, res, next) {
   var sql = 'select * from users where name = "' + name + '" and passwd = "' + pwd + '"';
   util.query(sql).then(function(result){
   	if(result.length > 0){
+      req.session.userInfo = {
+        userId : result[0].id,
+        userName : result[0].name,
+        userClass : result[0].class
+      };
   		res.end(JSON.stringify({resultCode:"000",userId:result[0].id}));
   	}else{
   		res.end(JSON.stringify({resultCode:"999",msg:"用户不存在!"}));

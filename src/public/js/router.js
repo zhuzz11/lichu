@@ -35,7 +35,7 @@ angular.module("lichu").config(["$stateProvider", "$urlRouterProvider", function
 
   ;
 
-  $urlRouterProvider.otherwise('/mybook');
+  $urlRouterProvider.otherwise('/login');
 
   // if none of the above states are matched, use this as the fallback
   // $urlRouterProvider.otherwise('/tab/dash');
