@@ -4,11 +4,12 @@ var mysql = require("mysql");
 var Q = require('q');
 
 var config = {
-	host:"112.74.183.125",
+	host:"localhost",
 	port:"3306",
 	user:"zdm",
 	password:"199112",
-	database:"myweb-dev"
+	database:"myweb"//生产环境
+	//database:"myweb-dev"//开发环境
 };
 var connection;
 
