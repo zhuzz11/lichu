@@ -22,7 +22,7 @@ angular.module("lichu").factory('apiservice', ['$state','apis','$http','$q','$io
 			$ionicLoading.show({
 				template:loading
 			});
-		}
+		};
 		showLoadding(loaddingTitle);
 		var deferred = $q.defer();
 		$http(params).then(function(result){
@@ -40,7 +40,7 @@ angular.module("lichu").factory('apiservice', ['$state','apis','$http','$q','$io
 
 		return deferred.promise;
 
-	}
+	};
 
 
 	var formateUrl = function(url,params){
@@ -48,7 +48,7 @@ angular.module("lichu").factory('apiservice', ['$state','apis','$http','$q','$io
 			url = url.replace('{' + i + '}', encodeURIComponent(params[i]));
 		}
 		return url;
-	}
+	};
 	return {
 		init: init
 	};
