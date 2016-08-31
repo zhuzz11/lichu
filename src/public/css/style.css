@@ -39,7 +39,7 @@
 }
 
 .login-box{
-	width: 90%;
+	width: 80%;
 	margin: 0 auto;
 	border: 0px;
 }
@@ -61,6 +61,7 @@ input.bottom-border{
 	height: 80px;
 	border-radius: 80px;
 	margin: 50px auto 40px;
+	overflow: hidden;
 }
 
 .login-submit{
@@ -88,6 +89,7 @@ input.bottom-border{
 	margin-left: 5%;
 	color: #604744;
 	font-size: 0.3rem;
+	text-decoration: underline;
 }
 #register{
 	float: right;
