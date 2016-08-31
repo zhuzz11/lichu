@@ -5,19 +5,16 @@ var util = require("../tools/mysql-query");
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-	console.log("sesion:" + JSON.stringify(req.session));
   if(!req.session.userInfo){
   	res.end(JSON.stringify({resultCode:"402",msg:"你没有访问权限。"}));
   	return;
   }
-
   var userId = req.session ? req.session.userInfo.userId : "";
-  var sql = "select contents.id,content,contents.date,title from contents,users where contents.userid = "+ userId + " order by contents.date desc";
+  var sql = "select contents.id,content,contents.date,title from contents where contents.userid = "+ userId + " order by contents.date desc";
   util.query(sql).then(function(result){
-  	res.end(JSON.stringify(result));
-  	console.log(result);
+  	res.end(JSON.stringify({resultCode:"000",resultObject:result,userInfo:req.session.userInfo}));
   },function(err){
-
+  	res.end(JSON.stringify({resultCode:"999",msg:"获取失败，请稍后重试。"}));
   });
   
 });
