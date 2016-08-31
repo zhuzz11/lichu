@@ -15,8 +15,12 @@ angular.module("lichu").controller('loginCtrl', ['$scope', '$state', 'apis', '$i
         popupService.fail(response.msg);
       }
     },function(){
-
+      popupService.fail("服务器超时！");
     });
     
+  };
+
+  $scope.register = function(){
+    $state.go("register");
   };
 }]);
