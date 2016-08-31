@@ -88,6 +88,7 @@ input.bottom-border{
 	margin-left: 5%;
 	color: #604744;
 	font-size: 0.3rem;
+	text-decoration: underline;
 }
 #register{
 	float: right;
