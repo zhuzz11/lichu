@@ -12,7 +12,7 @@ angular.module("lichu").controller('loginCtrl', ['$scope', '$state', 'apis', '$i
       }
     },function(){
 
-    })
+    });
     
   };
-}])
+}]);

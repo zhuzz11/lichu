@@ -7,7 +7,7 @@ var util = require("../tools/mysql-query");
 router.get('/', function(req, res, next) {
 	console.log("sesion:" + JSON.stringify(req.session));
   if(!req.session.userInfo){
-  	res.end(JSON.stringify({resultCode:402,msg:"你没有访问权限。"}));
+  	res.end(JSON.stringify({resultCode:"402",msg:"你没有访问权限。"}));
   	return;
   }
 

@@ -1,5 +1,5 @@
 
-angular.module("lichu").factory('apiservice', ['apis','$http','$q','$ionicLoading',function(apis,$http,$q,$ionicLoading){
+angular.module("lichu").factory('apiservice', ['$state','apis','$http','$q','$ionicLoading',function($state,apis,$http,$q,$ionicLoading){
 
 	var init = function(){
 		for(var i in apis){
@@ -25,9 +25,14 @@ angular.module("lichu").factory('apiservice', ['apis','$http','$q','$ionicLoadin
 		}
 		showLoadding(loaddingTitle);
 		var deferred = $q.defer();
-		$http(params).then(function(data){
+		$http(params).then(function(result){
 			$ionicLoading.hide();
-			deferred.resolve(data.data);
+			if(result.data.resultCode == "402"){//无权限，跳登录页面
+				$state.go("login");
+				deferred.resolve();
+				return;
+			}
+			deferred.resolve(result.data);
 		},function(){
 			$ionicLoading.hide();
 			deferred.reject();
