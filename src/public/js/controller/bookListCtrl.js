@@ -4,7 +4,9 @@ angular.module("lichu").controller('bookListCtrl', ['$scope', '$state', '$http',
     $state.go('writeBook');
   };
   $scope.gotoDetail = function(item) {
-    $state.go('detailBook');
+    $state.go('detailBook', {
+      bookId: item.id
+    });
   };
 
   var init = function(){
@@ -12,7 +14,7 @@ angular.module("lichu").controller('bookListCtrl', ['$scope', '$state', '$http',
       if(result && result.resultCode == "000"){
         $scope.books = result.resultObject;
       }else{
-        popupService.fail(result.msg);
+        result && popupService.fail(result.msg);
       }
       
     }, function() {
