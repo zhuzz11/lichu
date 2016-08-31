@@ -17,7 +17,7 @@ angular.module("lichu").controller('registerCtrl', ['$scope', '$state', 'apis', 
       if (response.resultCode == "000") {
         $state.go('mybook');
       } else {
-        console.log(response.msg);
+        popupService.fail(response.msg);
       }
     }, function() {
       popupService.fail("服务器超时！");
