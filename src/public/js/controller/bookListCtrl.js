@@ -9,7 +9,7 @@ angular.module("lichu").controller('bookListCtrl', ['$scope', '$state', '$http',
 
   var init = function(){
     apis.getBooks.send(null, null).then(function(result) {
-      if(result.resultCode == "000"){
+      if(result && result.resultCode == "000"){
         $scope.books = result.resultObject;
       }else{
         popupService.fail(result.msg);

@@ -8,7 +8,7 @@ var config = {
 	port:"3306",
 	user:"zdm",
 	password:"199112",
-	database:"myweb"
+	database:"myweb-dev"
 };
 var connection;
 
