@@ -34,9 +34,19 @@ router.get('/:bookId', function(req, res, next) {
 		return;
 	}
 	var post = [req.params.bookId];
-	var sql = 'select name,content,contents.date,title from contents,users where contents.userid = users.id and contents.id = ? order by contents.date desc';
+	var sql = 'select name,content,contents.date,title from contents,users where contents.userid = users.id and contents.id = ?';
 	util.query(sql, post).then(function(result) {
-		res.end(JSON.stringify(result));
+		if(result.length === 0){
+			res.end(JSON.stringify({
+				resultCode: "999",
+				msg: "获取失败，请稍后重试。"
+			}));
+		}else{
+			res.end(JSON.stringify({
+				resultCode: "000",
+				resultObject: result[0]
+			}));
+		}
 	}, function(err) {
 		res.end(JSON.stringify({
 			resultCode: "999",
