@@ -1,4 +1,4 @@
-<ion-view view-title="心有所楚" ng-controller="bookListCtrl">
+<ion-view view-title="心有所楚" ng-controller="bookListCtrl" >
 	<ion-content>
 		<ion-list>
 			<ion-item ng-repeat="item in books" ng-click="gotoDetail(item)" style="padding:10px 16px;">
@@ -7,8 +7,22 @@
 			    <div class="booklist-date">{{item.date | date:"yyyy-MM-dd HH:mm:ss"}}</div>
 			</ion-item>
 		</ion-list>
+		<div class="blank-block"></div>
 	</ion-content>
-	<ion-footer-bar align-title="center" class="book-footer-bar" ng-click="gotoWrite()">
-		<div class="title">写篇日记吧!</div>
-	</ion-footer-bar>
 </ion-view>
+
+<!--底部导航-->
+<div class="tabs tabs-icon-top">
+  <a class="tab-item" href="#/mybook">
+    <i class="icon ion-home"></i>
+    主页
+  </a>
+  <a class="tab-item" href="#/writebook">
+    <i class="icon ion-edit"></i>
+    写日记
+  </a>
+  <a class="tab-item" href="#/mybook">
+    <i class="icon ion-person"></i>
+    个人中心
+  </a>
+</div>
