@@ -10,7 +10,6 @@ angular.module("lichu").controller('writeBookCtrl', ['$scope', '$state', '$http'
     // Setup the loader
     var body = {
       content: $scope.books.bookcontent,
-      name: "lichu",
       title: $scope.books.title
     };
     apis.uploadBook.send(null, body, "正在发表...").then(function(data) {
