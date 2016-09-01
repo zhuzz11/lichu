@@ -7,8 +7,9 @@ var util = require("../tools/mysql-query");
 router.post('/login', function(req, res, next) {
   var name = req.body.name;
   var pwd = req.body.pwd;
-  var sql = 'select * from users where name = "' + name + '" and passwd = "' + pwd + '"';
-  util.query(sql).then(function(result) {
+  var post = [name,pwd];
+  var sql = 'select * from users where name = ? and passwd = ?';
+  util.query(sql , post).then(function(result) {
     if (result.length > 0) {
       req.session.userInfo = {
         userId: result[0].id,
@@ -61,8 +62,10 @@ router.post('/register', function(req, res, next) {
     }));
     return;
   }
-  var sql = 'insert into users(name,passwd,date) values ("' + name + '", "' + pwd + '",' + new Date().getTime() + ')';
-  util.insert(sql).then(function(result) {
+  var post = [name,pwd,new Date().getTime()];
+
+  var sql = 'insert into users(name,passwd,date) values (?, ?,?)';
+  util.query(sql,post).then(function(result) {
     res.end(JSON.stringify({
       resultCode: "000",
       msg: "注册成功！"
