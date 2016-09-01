@@ -43,6 +43,11 @@
 	margin: 0 auto;
 	border: 0px;
 }
+
+.login-box input:focus
+{ 
+	border-bottom: 1px solid #3498FF;
+}
 input.login-input{
 	border: 0px solid #ccc;
 	width: 100%;
@@ -76,34 +81,27 @@ input.bottom-border{
 	border-radius: 3px;
 }
 
+.login-submit:hover{
+	opacity: 0.8;
+}
+
 .login-tool{
-	position: absolute;
-	position: fixed;
-	bottom: 0px;
+	line-height: 0.65rem;
 	height: 1rem;
-	width: 100%;
+	width: 80%;
+	margin: 0 auto;
 	line-height: 1rem;
+	z-index: -1;
+	color: #949494;
+	font-size: 0.25rem;
 }
 #forget{
-	float: left;
-	margin-left: 5%;
-	color: #604744;
-	font-size: 0.3rem;
-	text-decoration: underline;
+	float: right;
+	margin-right: 10px;
+	color: #3498FF;
 }
 #register{
-	float: right;
-    margin-right: 5%;
-    margin-top: 0.15rem;
-    width: 1.5rem;
-    height: 0.65rem;
-    line-height: 0.65rem;
-    background-color: #EFCFC7;
-    border: 1px solid #ccc;
-    border-radius: 0.3rem;
-    text-align: center;
-    font-size: 0.3rem;
-    color: #5D5B53;
+    color: #3498FF;
 }
 
 .lit-pink{
