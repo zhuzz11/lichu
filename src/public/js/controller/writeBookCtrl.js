@@ -1,4 +1,4 @@
-angular.module("lichu").controller('writeBookCtrl', ['$scope', '$state', '$http', 'apis',function($scope, $state, $http, apis) {
+angular.module("lichu").controller('writeBookCtrl', ['$scope', '$state', '$http', 'apis', 'popupService',function($scope, $state, $http, apis, popupService) {
 
   $scope.books = {
     bookcontent: "",
@@ -12,16 +12,19 @@ angular.module("lichu").controller('writeBookCtrl', ['$scope', '$state', '$http'
       content: $scope.books.bookcontent,
       title: $scope.books.title
     };
-    apis.uploadBook.send(null, body, "正在发表...").then(function(data) {
-      if (data.resultCode == "000") {
+    if(body.content.trim() === "" || body.content.length < 10){
+      popupService.fail("内容长度太少，不能低于10个有效字符。");
+      return;
+    }
+    apis.uploadBook.send(null, body, "正在发表...").then(function(result) {
+      if (result.resultCode == "000") {
         $state.go('mybook');
       } else {
-
+        popupService.fail(result.msg);
       }
-
     }, function() {
-      alert("upload error");
+      popupService.fail("发表失败，稍后重试。");
     });
-  }
+  };
 
 }]);
