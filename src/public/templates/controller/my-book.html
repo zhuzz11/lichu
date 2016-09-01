@@ -1,10 +1,10 @@
 <ion-view view-title="心有所楚" ng-controller="bookListCtrl">
 	<ion-content>
 		<ion-list>
-			<ion-item ng-repeat="item in books" ng-click="gotoDetail(item)">
+			<ion-item ng-repeat="item in books" ng-click="gotoDetail(item)" style="padding:10px 16px;">
 			    <h2>{{item.title}}</h2>
 			    <p>{{item.content}}</p>
-			    <div class="bookdate">{{item.date | date:"yyyy-MM-dd HH:mm:ss"}}</div>
+			    <div class="booklist-date">{{item.date | date:"yyyy-MM-dd HH:mm:ss"}}</div>
 			</ion-item>
 		</ion-list>
 	</ion-content>
