@@ -60,7 +60,13 @@ router.post('/upload', function(req, res) {
 	if (!auth.checkAuth(req, res)) {
 		return;
 	}
-	console.log("in upload===========");
+	if(req.body.content.trim() === "" || req.body.content.length < 10){
+		res.end(JSON.stringify({
+			resultCode: "999",
+			msg: "正文内容长度太少，不能低于10个有效字符。"
+		}));
+		return;
+	}
 	var userId = req.session.userInfo.userId;
 	var post = [userId, req.body.content, new Date().getTime(), req.body.title];
 	var sql = 'insert into contents(userid, content, date,title) values(?,?,?,?)';
