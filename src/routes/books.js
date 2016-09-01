@@ -35,7 +35,7 @@ router.get('/:bookId', function(req, res, next) {
 	}
 	var post = [req.params.bookId];
 	var sql = 'select name,content,contents.date,title from contents,users where contents.userid = users.id and contents.id = ? order by contents.date desc';
-	util.query(sqk, post).then(function(result) {
+	util.query(sql, post).then(function(result) {
 		res.end(JSON.stringify(result));
 	}, function(err) {
 		res.end(JSON.stringify({

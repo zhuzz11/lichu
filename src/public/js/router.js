@@ -8,6 +8,7 @@ angular.module("lichu").config(["$stateProvider", "$urlRouterProvider", function
 
     .state('mybook', {
     url: '/mybook',
+    cache: false,
     templateUrl: 'templates/controller/my-book.html'
   })
 
