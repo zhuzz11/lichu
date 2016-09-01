@@ -150,3 +150,10 @@ input.bottom-border{
 .book-editbox{
 	padding: 10px;
 }
+
+.loadMore{
+	height: 50px;
+    text-align: center;
+    line-height: 50px;
+    color: #949494;
+}

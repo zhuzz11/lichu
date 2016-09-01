@@ -11,7 +11,7 @@ angular.module('lichu').factory('apis', function(){
     },
     getBooks:{
       url:"/books",
-      method:"get"
+      method:"post"
     },
     uploadBook:{
       url:"/books/upload",

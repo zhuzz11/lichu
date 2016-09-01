@@ -8,11 +8,25 @@ angular.module("lichu").controller('bookListCtrl', ['$scope', '$state', '$http',
       bookId: item.id
     });
   };
+  $scope.noMore = false;
+  $scope.books = [];
+  $scope.page = 1;
 
-  var init = function(){
-    apis.getBooks.send(null, null).then(function(result) {
+  $scope.loadMore = function(){
+    getPage($scope.page);
+  };
+
+  var getPage = function(page){
+    var body = {
+      page: page
+    };
+    apis.getBooks.send(null, body).then(function(result) {
       if(result && result.resultCode == "000"){
-        $scope.books = result.resultObject;
+        if(result.resultObject.length < 10){
+          $scope.noMore = true;
+        }
+        $scope.books = $scope.books.concat(result.resultObject);
+        $scope.page ++;
       }else{
         result && popupService.fail(result.msg);
       }
@@ -20,7 +34,9 @@ angular.module("lichu").controller('bookListCtrl', ['$scope', '$state', '$http',
     }, function() {
       popupService.fail("连接超时。");
     });
-  }();
+  };
+
+  getPage($scope.page);
   
 
 }]);
