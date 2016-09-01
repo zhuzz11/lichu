@@ -16,21 +16,26 @@
 .book-textarea{
 	padding: 6px 8px;
 	width: 100%;
-	min-height: 200px;
+	min-height: 300px;
 	border: 1px solid #ccc;
+	line-height: 20px;
+	font-size: 14px;
 }
 .input-title{
 	padding:3px 6px;
 	width: 100%;
 	margin-bottom: 8px;
 	margin-top: 3px;
+	border: 1px solid #ccc;
+	height: 50px;
+    font-size: 18px;
 }
 .btn-submit{
 	height: 25px;
 	float: right;
 	line-height: 23px;
 	min-height: 25px;
-	margin: 2px 3px 0 0;
+	margin: 10px 3px 0 0;
 }
 
 .login-box{
@@ -128,4 +133,8 @@ input.bottom-border{
 
 .blank-block{
 	height: 47px;
+}
+
+.book-editbox{
+	padding: 10px;
 }

@@ -1,8 +1,10 @@
 <ion-view view-title="心有所楚" ng-controller="writeBookCtrl">
 	<ion-content>
-		<input placeholder="标题" ng-model="books.title" class="input-title">
-		<textarea placeholder="在这里开始写吧！" class="book-textarea" ng-model="books.bookcontent"></textarea>
-		<button class="button button-positive btn-submit" ng-click="uploadbook()">提交</button>
+		<div class="book-editbox">
+			<input placeholder="标题" ng-model="books.title" class="input-title">
+			<textarea placeholder="正文" class="book-textarea" ng-model="books.bookcontent"></textarea>
+			<button class="button button-positive btn-submit" ng-click="uploadbook()">提交</button>
+		</div>
 		<div class="blank-block"></div>
 	</ion-content>
 	<!--test htmlmin-->

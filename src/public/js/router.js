@@ -24,12 +24,10 @@ angular.module("lichu").config(["$stateProvider", "$urlRouterProvider", function
 
   .state('writeBook', {
       url: '/writebook',
-      cache: false,
       templateUrl: 'templates/controller/write-book.html'
     })
     .state('detailBook', {
       url: '/detailbook/:bookId',
-      cache: false,
       templateUrl: 'templates/controller/detail-book.html'
     })
 
