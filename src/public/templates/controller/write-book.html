@@ -1,8 +1,25 @@
 <ion-view view-title="心有所楚" ng-controller="writeBookCtrl">
 	<ion-content>
-		<input placeholder="标题" ng-model="books.title" class="book-title">
+		<input placeholder="标题" ng-model="books.title" class="input-title">
 		<textarea placeholder="在这里开始写吧！" class="book-textarea" ng-model="books.bookcontent"></textarea>
 		<button class="button button-positive btn-submit" ng-click="uploadbook()">提交</button>
+		<div class="blank-block"></div>
 	</ion-content>
 	<!--test htmlmin-->
 </ion-view>
+
+<!--底部导航-->
+<div class="tabs tabs-icon-top">
+  <a class="tab-item" href="#/mybook">
+    <i class="icon ion-home"></i>
+    主页
+  </a>
+  <a class="tab-item" href="#/writebook">
+    <i class="icon"></i>
+    
+  </a>
+  <a class="tab-item" href="#/mybook">
+    <i class="icon ion-person"></i>
+    个人中心
+  </a>
+</div>
