@@ -4,7 +4,9 @@ angular.module("lichu").controller('writeBookCtrl', ['$scope', '$state', '$http'
     bookcontent: "",
     title: ""
   };
-
+  $(".book-textarea").bind("keydown keyup",function(){
+   $(this).autosize();
+  }).show().autosize();
 
   $scope.uploadbook = function() {
     // Setup the loader

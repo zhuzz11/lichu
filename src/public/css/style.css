@@ -19,9 +19,11 @@ body{
 .book-textarea{
 	padding: 6px 8px;
 	width: 100%;
+	height: 300px;
 	min-height: 300px;
+	max-height: 500px;
 	border: 0;
-	border-bottom: 1px solid #f6eeed;
+	border-bottom: 1px solid #ccc;
 	line-height: 20px;
 	font-size: 14px;
 }
@@ -31,13 +33,12 @@ body{
 	margin-bottom: 8px;
 	margin-top: 3px;
 	border: 0;
-	border-bottom: 1px solid #f6eeed;
+	border-bottom: 1px solid #ccc;
 	height: 50px;
     font-size: 18px;
 }
 .btn-submit{
 	height: 25px;
-	float: right;
 	line-height: 23px;
 	min-height: 25px;
 	margin: 10px 3px 0 0;

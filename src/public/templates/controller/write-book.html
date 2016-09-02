@@ -3,7 +3,9 @@
 		<div class="book-editbox">
 			<input placeholder="标题(非必填)" ng-model="books.title" class="input-title">
 			<textarea placeholder="正文(不能低于10个有效字符)" class="book-textarea" ng-model="books.bookcontent"></textarea>
-			<button class="button button-positive btn-submit" ng-click="uploadbook()">提交</button>
+      <div style="text-align: right">
+			 <button class="button button-positive btn-submit" ng-click="uploadbook()">提交</button>
+      </div>
 		</div>
 		<div class="blank-block"></div>
 	</ion-content>
