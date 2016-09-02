@@ -9,15 +9,15 @@
 		</ion-list>
 		<div class="loadMore" ng-click="loadMore()" ng-if="!noMore">加载更多...</div>
 		<div class="loadMore" ng-if="noMore && books.length > 0">已经没有了</div>
-		<div class="loadMore" ng-if="books.length == 0">没有内容</div>
+		<div class="loadMore" ng-if="noMore && books.length == 0">没有内容</div>
 		<div class="blank-block"></div>
 	</ion-content>
-	<div class="tip" ng-if="books.length == 0">请点击这里开始你的记录旅程<div class="arraw-bottom"></div></div>
+	<div class="tip" ng-if="noMore && books.length == 0">请点击这里开始你的记录旅程<div class="arraw-bottom"></div></div>
 </ion-view>
 
 <!--底部导航-->
 <div class="tabs tabs-icon-top">
-  <a class="tab-item" href="#/mybook">
+  <a class="tab-item tab-active" href="#/mybook">
     <i class="icon ion-home"></i>
     主页
   </a>

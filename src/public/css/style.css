@@ -184,3 +184,7 @@ input.bottom-border{
     border-top: 10px solid #D4D4D4;
     margin-bottom: -10px;
 }
+
+.tab-active {
+	color: #00BFFF;
+}
