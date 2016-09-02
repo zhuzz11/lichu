@@ -1,0 +1,53 @@
+<ion-view view-title="个人中心" ng-controller="myCenterCtrl" >   
+    <ion-content class="content ionic-pseudo">
+
+      <div class="list">
+
+        <a class="item item-icon-left item-icon-right" ng-click="manage()">
+          <i class="icon ion-ios-people-outline"></i>
+          账号管理
+          <i class="icon ion-ios-arrow-right dark-ddd"></i>
+        </a>
+
+        <a class="item item-icon-left item-icon-right" ng-click="edit()">
+          <i class="icon ion-ios-compose-outline"></i>
+          修改密码
+          <i class="icon ion-ios-arrow-right dark-ddd"></i>
+        </a>
+
+        <a class="item item-icon-left item-icon-right" ng-click="setting()">
+          <i class="icon ion-ios-gear-outline"></i>
+          设置
+          <i class="icon ion-ios-arrow-right dark-ddd"></i>
+        </a>
+
+        <div class="item item-divider">
+          
+        </div>
+
+        <a class="item item-icon-left item-icon-right" ng-click="logout()">
+          <i class="icon ion-ios-undo-outline"></i>
+          退出
+          <i class="icon ion-ios-arrow-right dark-ddd"></i>
+        </a>
+
+      </div>
+    </ion-content>
+	<div class="blank-block"></div>
+</ion-view>
+
+<!--底部导航-->
+<div class="tabs tabs-icon-top">
+  <a class="tab-item" href="#/mybook">
+    <i class="icon ion-home"></i>
+    主页
+  </a>
+  <a class="tab-item" href="#/writebook">
+    <i class="icon ion-edit"></i>
+    写日记
+  </a>
+  <a class="tab-item tab-active" href="#/mycenter">
+    <i class="icon ion-person"></i>
+    个人中心
+  </a>
+</div>

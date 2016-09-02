@@ -30,8 +30,10 @@ angular.module("lichu").config(["$stateProvider", "$urlRouterProvider", function
       url: '/detailbook/:bookId',
       templateUrl: 'templates/controller/detail-book.html'
     })
-
-  ;
+    .state('myCenter', {
+      url: '/mycenter',
+      templateUrl: 'templates/controller/my-center.html'
+    });
 
   $urlRouterProvider.otherwise('/login');
 
