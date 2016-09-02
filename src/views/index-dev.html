@@ -14,6 +14,7 @@
 
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/jquery/jquery-1.11.1.min.js"></script>
     <script src="lib/aes.js"></script>
 
     <!-- your app's js -->
@@ -29,6 +30,7 @@
     <script src="js/controller/detailBookCtrl.js"></script>
     <script src="js/controller/loginCtrl.js"></script>
     <script src="js/controller/registerCtrl.js"></script>
+    <script src="js/controller/myCenterCtrl.js"></script>
     <!--filters-->
     <script src="js/filter/common.js"></script>
 
@@ -46,5 +48,14 @@
   var fontSize = window.innerWidth * 100.0 / 720;
   html.setAttribute("style","font-size:" + fontSize + "px");
 
+
+  $.fn.autosize = function(){
+    $(this).height('0px');
+    var setheight = $(this).get(0).scrollHeight;
+    if($(this).attr("_height") != setheight)
+     $(this).height(setheight+"px").attr("_height",setheight);
+    else
+     $(this).height($(this).attr("_height")+"px");
+   }
   </script>
 </html>
