@@ -7,9 +7,9 @@ var util = require("../tools/mysql-query");
 router.post('/login', function(req, res, next) {
   var name = req.body.name;
   var pwd = req.body.pwd;
-  var post = [name,pwd];
+  var post = [name, pwd];
   var sql = 'select * from users where name = ? and passwd = ?';
-  util.query(sql , post).then(function(result) {
+  util.query(sql, post).then(function(result) {
     if (result.length > 0) {
       req.session.userInfo = {
         userId: result[0].id,
@@ -39,6 +39,13 @@ router.post('/login', function(req, res, next) {
 router.post('/register', function(req, res, next) {
   var body = req.body;
   var name = body.name;
+  if (/\s/.test(name)) {
+    res.end(JSON.stringify({
+      resultCode: "999",
+      msg: "账号不能含空字符！"
+    }));
+    return;
+  }
   if (name.length < 1 || name.length > 10) {
     res.end(JSON.stringify({
       resultCode: "999",
@@ -62,19 +69,28 @@ router.post('/register', function(req, res, next) {
     }));
     return;
   }
-  var post = [name,pwd,new Date().getTime()];
-
+  var post = [name, pwd, new Date().getTime()];
+  var exist = 'select name from users where name = ?';
   var sql = 'insert into users(name,passwd,date) values (?, ?,?)';
-  util.query(sql,post).then(function(result) {
-    res.end(JSON.stringify({
-      resultCode: "000",
-      msg: "注册成功！"
-    }));
-  }, function(err) {
-    res.end(JSON.stringify({
-      resultCode: "999",
-      msg: "服务器异常，请稍后再试！"
-    }));
+  util.query(exist, [name]).then(function(result) {
+    if (result.length > 0) {
+      res.end(JSON.stringify({
+        resultCode: "999",
+        msg: "账号已注册，请换个试试"
+      }));
+    } else {
+      util.query(sql, post).then(function(result) {
+        res.end(JSON.stringify({
+          resultCode: "000",
+          msg: "注册成功！"
+        }));
+      }, function(err) {
+        res.end(JSON.stringify({
+          resultCode: "999",
+          msg: "服务器异常，请稍后再试！"
+        }));
+      });
+    }
   });
 
 });
