@@ -35,6 +35,16 @@ router.post('/login', function(req, res, next) {
 
 });
 
+/* logout. */
+router.get('/logout', function(req, res, next) {
+  req.session.userInfo = null;
+  res.end(JSON.stringify({
+    resultCode: "000",
+    msg: "退出成功"
+  }));
+
+});
+
 /* register. */
 router.post('/register', function(req, res, next) {
   var body = req.body;

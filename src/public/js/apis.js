@@ -5,6 +5,10 @@ angular.module('lichu').factory('apis', function(){
       url:"/users/login",
       method:"post"
     },
+    logout:{
+      url:'/users/logout',
+      method:"get"
+    },
     register:{
       url:"/users/register",
       method:"post"
@@ -21,5 +25,5 @@ angular.module('lichu').factory('apis', function(){
       url:"/books/{id}",
       method:"get"
     }
-  }
+  };
 });
