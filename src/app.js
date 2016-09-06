@@ -160,4 +160,8 @@ function onListening() {
   console.log("Listening on "+ addr.port);
 }
 
+process.on("uncatchException", function(e) {
+ console.log("this is =="+e);
+ //process.exit(1);
+});
 //module.exports = app;
