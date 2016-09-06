@@ -16,6 +16,7 @@
     "q": "^1.4.1",
     "serve-favicon": "~2.3.0",
     "express-session": "latest",
-    "supervisor": "latest"
+    "supervisor": "~0.11.0",
+    "connect-redis": "~3.1.0"
   }
 }
