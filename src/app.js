@@ -23,17 +23,21 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+
 var session = require('express-session');
+var redisStore = require('connect-redis')(session);
 app.use(session({
-  secret: "keyboard cat",
-  key: "12345",
-  cookie: {
-  secret: true,
-  expires: false
-  },
-  resave: true,
-  saveUninitialized: true
+    store: new redisStore({
+        host: "127.0.0.1",   //本地
+        port: 6379,
+        pass: "lichu",
+        ttl: 60 * 30 // 秒
+    }),
+    resave: false,
+    saveUninitialized: false,
+    secret: 'keyboard cat'
 }));
+
 //生产环境
 app.use(express.static(path.join(__dirname, 'dist')));
 //dev 环境
@@ -160,4 +164,8 @@ function onListening() {
   console.log("Listening on "+ addr.port);
 }
 
+process.on("uncatchException", function(e) {
+ console.log("this is =="+e);
+ //process.exit(1);
+});
 //module.exports = app;
