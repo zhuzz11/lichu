@@ -2,7 +2,7 @@ angular.module("lichu").controller("myCenterCtrl", ['apis','$scope', '$state', '
 	$scope.logout = function() {
 		popupService.confirm("确定退出？").then(function(option) {
 			if (option) {
-				apis.logout.send(null,null).then(function(result){
+				apis.logout.send(null,null,"正在退出...").then(function(result){
 					if(result && result.resultCode == "000"){
 						$state.go("login");
 					}
