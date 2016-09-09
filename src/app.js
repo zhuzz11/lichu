@@ -28,7 +28,8 @@ var session = require('express-session');
 var redisStore = require('connect-redis')(session);
 app.use(session({
     store: new redisStore({
-        host: "127.0.0.1",   //本地
+        //host: "127.0.0.1",   //生产环境
+        host: "112.74.183.125",   //本地
         port: 6379,
         pass: "@&hidshf4534osf!hosfjos6575f98jp",
         ttl: 60 * 30 // 秒
