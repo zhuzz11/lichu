@@ -30,7 +30,7 @@ app.use(session({
     store: new redisStore({
         host: "127.0.0.1",   //本地
         port: 6379,
-        pass: "lichu",
+        pass: "@&hidshf4534osf!hosfjos6575f98jp",
         ttl: 60 * 30 // 秒
     }),
     resave: false,
