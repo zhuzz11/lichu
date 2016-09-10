@@ -17,25 +17,29 @@ body{
 }
 
 .book-textarea{
-	padding: 6px 8px;
+	padding: 5px 0px;
 	width: 100%;
 	height: 100px;
 	min-height: 100px;
 	max-height: 250px;
 	border: 0;
+	border-radius: 0px;
 	border-bottom: 1px solid #ccc;
 	line-height: 20px;
 	font-size: 14px;
+	text-align:justify;
+	text-justify:inter-ideograph;
 }
 .input-title{
-	padding:3px 6px;
+	padding:3px 0px;
 	width: 100%;
-	margin-bottom: 8px;
 	margin-top: 3px;
+	padding-bottom: 10px;
 	border: 0;
+	border-radius: 0px;
 	border-bottom: 1px solid #ccc;
-	height: 50px;
-    font-size: 18px;
+	height: 31px;
+    font-size: 20px;
 }
 .btn-submit{
 	height: 25px;
@@ -50,6 +54,15 @@ body{
 	border: 0px;
 }
 
+.logo{
+	color: #fff;
+	text-align: center;
+	margin-top: 30px;
+	font-size: 25px;
+	text-shadow: 5px 2px 6px #555;
+	margin-bottom: 20px;
+}
+
 .login-box input:focus
 { 
 	border-bottom: 1px solid #3498FF;
@@ -57,9 +70,20 @@ body{
 input.login-input{
 	border: 0px solid #ccc;
 	width: 100%;
+	font-size: 15px; 
 	height: 45px;
-	padding: 2px 10px;
+	line-height: 15px;
+	padding: 15px 10px 14px 10px;
 	margin: 0 auto;
+	border-radius: 0px;
+}
+input.login-user{
+	border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+input.login-pwd{
+	border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
 }
 
 input.bottom-border{
@@ -107,12 +131,14 @@ input.bottom-border{
 }
 #register{
     color: #3498FF;
+    text-decoration: none;
+    display: inline-block;
+    height: 100%;
 }
 
 .lit-pink{
 	background-color:#f6e8e5;
 }
-
 
 .book-title{
 	text-align: left;
@@ -124,13 +150,20 @@ input.bottom-border{
 }
 
 .book-content{
+	margin-top: 3px;
 	color: #575757;
-	font-size: 15px;
-	text-indent: 30px;
+	font-size: 14px;
 	padding: 5px 10px;
-	line-height: 23px;
+	line-height: 20px;
 	text-align:justify;
 	text-justify:inter-ideograph;
+}
+
+.list-content{
+	height: 20px;
+	overflow: hidden;
+	white-space:nowrap; 
+	text-overflow:ellipsis;
 }
 .book-date{
 	text-align: right;
@@ -151,6 +184,10 @@ input.bottom-border{
 }
 
 .book-editbox{
+	padding: 10px 20px;
+}
+
+.book-detailbox{
 	padding: 10px;
 }
 

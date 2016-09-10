@@ -20,7 +20,7 @@ angular.module("lichu").controller('loginCtrl', ['$scope', '$state', 'apis', '$i
     
   };
 
-  $scope.register = function(){
-    $state.go("register");
+  $scope.forget = function(){
+    popupService.fail("暂不支持，请记住密码。");
   };
 }]);

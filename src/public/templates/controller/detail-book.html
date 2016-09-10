@@ -1,9 +1,26 @@
 <ion-view view-title="心有所楚" ng-controller="detailBookCtrl">
 	<ion-content>
-		<div class="book-editbox">
+		<div class="book-detailbox">
 			<div class="book-title">{{item | titleFilter | date:"yyyy/MM/dd"}}</div>
 		    <div class="book-content" ng-bind-html="item.content"></div>
 		    <div class="book-date">{{item.date | date:"yyyy-MM-dd HH:mm:ss"}}</div>
 	    </div>
+	    <div class="blank-block"></div>
 	</ion-content>
 </ion-view>
+
+<!--底部导航-->
+<div class="tabs tabs-icon-top">
+  <a class="tab-item" href="#/mybook">
+    <i class="icon ion-home"></i>
+    主页
+  </a>
+  <a class="tab-item" href="#/writebook">
+    <i class="icon ion-edit"></i>
+    随心记
+  </a>
+  <a class="tab-item" href="#/mycenter">
+    <i class="icon ion-person"></i>
+    个人中心
+  </a>
+</div>

@@ -1,11 +1,8 @@
-angular.module("lichu").controller('bookListCtrl', ['$scope', '$state', '$http', 'apis','popupService',function($scope, $state, $http, apis, popupService) {
+angular.module("lichu").controller('bookListCtrl', ['$scope', '$state', '$http', 'apis','popupService','util',function($scope, $state, $http, apis, popupService, util) {
 
-  $scope.gotoWrite = function() {
-    $state.go('writeBook');
-  };
-  $scope.gotoDetail = function(item) {
+  $scope.gotoDetail = function(id) {
     $state.go('detailBook', {
-      bookId: item.id
+      bookId: id
     });
   };
   $scope.noMore = false;
@@ -24,6 +21,11 @@ angular.module("lichu").controller('bookListCtrl', ['$scope', '$state', '$http',
       if(result && result.resultCode == "000"){
         if(result.resultObject.length < 10){
           $scope.noMore = true;
+        }
+        for(var i=0;i<result.resultObject.length;i++){
+          var item = result.resultObject[i];
+          item.content = item.content.trim();
+          item.content = util.format2html(item.content);
         }
         $scope.books = $scope.books.concat(result.resultObject);
         $scope.page ++;
