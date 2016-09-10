@@ -1,11 +1,8 @@
 angular.module("lichu").controller('bookListCtrl', ['$scope', '$state', '$http', 'apis','popupService','util',function($scope, $state, $http, apis, popupService, util) {
 
-  $scope.gotoWrite = function() {
-    $state.go('writeBook');
-  };
-  $scope.gotoDetail = function(item) {
+  $scope.gotoDetail = function(id) {
     $state.go('detailBook', {
-      bookId: item.id
+      bookId: id
     });
   };
   $scope.noMore = false;

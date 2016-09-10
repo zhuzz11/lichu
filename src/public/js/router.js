@@ -14,24 +14,29 @@ angular.module("lichu").config(["$stateProvider", "$urlRouterProvider", function
 
   .state('login', {
     url: '/login',
+    cache: false,
     templateUrl: 'templates/controller/login.html'
   })
 
   .state('register', {
     url: '/register',
+    cache: false,
     templateUrl: 'templates/controller/register.html'
   })
 
   .state('writeBook', {
       url: '/writebook',
+      cache: false,
       templateUrl: 'templates/controller/write-book.html'
     })
     .state('detailBook', {
       url: '/detailbook/:bookId',
+      cache: false,
       templateUrl: 'templates/controller/detail-book.html'
     })
     .state('myCenter', {
       url: '/mycenter',
+      cache: false,
       templateUrl: 'templates/controller/my-center.html'
     });
 
