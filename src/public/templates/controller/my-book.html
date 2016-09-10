@@ -3,7 +3,7 @@
 		<ion-list>
 			<ion-item ng-repeat="item in books" ng-click="gotoDetail(item)" style="padding:10px 16px 3px;">
 			    <h2>{{item | titleFilter | date:"yyyy/MM/dd"}}</h2>
-			    <p>{{item.content}}</p>
+			    <p class="list-content" ng-bind-html="item.content"></p>
 			    <div class="booklist-date">{{item.date | date:"yyyy-MM-dd HH:mm:ss"}}</div>
 			</ion-item>
 		</ion-list>
