@@ -39,3 +39,4 @@ jspm_packages
 
 # 忽略发布文件夹，不是源码
 src/dist
+dist
