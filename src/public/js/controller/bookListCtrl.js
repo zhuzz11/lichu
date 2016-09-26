@@ -1,4 +1,4 @@
-angular.module("lichu").controller('bookListCtrl', ['$scope', '$state', '$http', 'apis','popupService','util',function($scope, $state, $http, apis, popupService, util) {
+angular.module("lichu").controller('bookListCtrl', ['$scope', '$state', '$http', 'apis','popupService','util','$ionicScrollDelegate',function($scope, $state, $http, apis, popupService, util, $ionicScrollDelegate) {
 
   $scope.gotoDetail = function(item) {
     util.set("book",item);
@@ -29,6 +29,9 @@ angular.module("lichu").controller('bookListCtrl', ['$scope', '$state', '$http',
           item.content = util.format2html(item.content);
         }
         $scope.books = $scope.books.concat(result.resultObject);
+        setTimeout(function(){
+          $ionicScrollDelegate.resize();
+        },500);
         $scope.page ++;
       }else{
         result && popupService.fail(result.msg);

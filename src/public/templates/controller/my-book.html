@@ -1,5 +1,5 @@
 <ion-view view-title="心有所楚" ng-controller="bookListCtrl" >
-	<ion-content>
+	<ion-content overflow-scroll='false'>
 		<ion-list>
 			<ion-item ng-repeat="item in books" ng-click="gotoDetail(item)" style="padding:10px 16px 3px;">
 			    <h2>{{item | titleFilter | date:"yyyy/MM/dd"}}</h2>
@@ -7,9 +7,9 @@
 			    <div class="booklist-date">{{item.date | date:"yyyy-MM-dd HH:mm:ss"}}</div>
 			</ion-item>
 		</ion-list>
-		<div class="loadMore" ng-click="loadMore()" ng-if="!noMore">加载更多...</div>
-		<div class="loadMore" ng-if="noMore && books.length > 0">已经没有了</div>
-		<div class="loadMore" ng-if="noMore && books.length == 0">没有内容</div>
+		<div class="bottomItem loadMore" ng-click="loadMore()" ng-if="!noMore">加载更多...</div>
+		<div class="bottomItem" ng-if="noMore && books.length > 0">已经没有了</div>
+		<div class="bottomItem" ng-if="noMore && books.length == 0">没有内容</div>
 		<div class="blank-block"></div>
 	</ion-content>
 	<div class="tip" ng-if="noMore && books.length == 0">请点击这里开始你的记录旅程<div class="arraw-bottom"></div></div>
