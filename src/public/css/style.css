@@ -191,12 +191,15 @@ input.bottom-border{
 	padding: 10px;
 }
 
-.loadMore{
+.bottomItem{
 	height: 50px;
     text-align: center;
     line-height: 50px;
     color: #949494;
     background-color: #EDEDED;
+}
+.loadMore{
+	cursor: pointer;
 }
 
 .tip{
