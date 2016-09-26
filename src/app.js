@@ -39,10 +39,7 @@ app.use(session({
     secret: 'keyboard cat'
 }));
 
-//生产环境
-app.use(express.static(path.join(__dirname, 'dist')));
-//dev 环境
-//app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
