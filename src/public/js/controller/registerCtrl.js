@@ -13,6 +13,14 @@ angular.module("lichu").controller('registerCtrl', ['$scope', '$state', 'apis', 
       popupService.fail("两次输入密码不一致！");
       return;
     }
+    if ($scope.user.name.length < 1 || $scope.user.name.length > 10) {
+      popupService.fail("账号长度不符！");
+      return;
+    }
+    if (!/^[a-zA-Z0-9_!@#$%^&*()-\\+]{6,15}$/.test($scope.user.pwd)) {
+      popupService.fail("密码不符规范！");
+      return;
+    }
     apis.register.send(null, $scope.user).then(function(response) {
       if (response.resultCode == "000") {
         $state.go('mybook');
