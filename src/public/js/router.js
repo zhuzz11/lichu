@@ -38,6 +38,11 @@ angular.module("lichu").config(["$stateProvider", "$urlRouterProvider", function
       url: '/mycenter',
       cache: false,
       templateUrl: 'templates/controller/my-center.html'
+    })
+    .state('editPwd', {
+      url: '/editpwd',
+      cache: false,
+      templateUrl: 'templates/controller/edit-pwd.html'
     });
 
   $urlRouterProvider.otherwise('/login');

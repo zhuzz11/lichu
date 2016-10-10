@@ -5,12 +5,12 @@
 			<!-- <img src="/img/avatar.jpg" style="width: 100%;height: auto;"> -->
 		</div>
 
-		<div class="login-box">
-			<input type="text" class="login-input bottom-border login-user" ng-model="user.name" placeholder="账号"/>
+		<div class="input-box">
+			<input type="text" class="first" ng-model="user.name" placeholder="账号"/>
 
-			<input type="password" class="login-input bottom-border login-pwd" ng-model="user.pwd" placeholder="密码"/>
+			<input type="password" class="last" ng-model="user.pwd" placeholder="密码"/>
 
-			<input type="button" class="login-submit" ng-click="login()" value="登 录"/>
+			<button class="submit" ng-click="login()">登 录</button>
 		</div>
 		<div class="login-tool">
 			<div id="forget" ng-click="forget()">忘记密码?</div>
