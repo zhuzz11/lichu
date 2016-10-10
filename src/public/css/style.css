@@ -126,6 +126,9 @@ body{
 	margin-right: 10px;
 	color: #3498FF;
 }
+#forget:hover{
+	cursor: pointer;
+}
 #register{
     color: #3498FF;
     text-decoration: none;

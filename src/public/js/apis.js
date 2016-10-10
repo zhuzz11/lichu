@@ -24,6 +24,10 @@ angular.module('lichu').factory('apis', function(){
     getDetailBookbyId:{
       url:"/books/{id}",
       method:"get"
+    },
+    editPwd:{
+      url:"/users/editpwd",
+      method:"post"
     }
   };
 });

@@ -19,6 +19,6 @@ angular.module("lichu").controller("myCenterCtrl", ['apis','$scope', '$state', '
 		popupService.fail("暂未开发")
 	};
 	$scope.edit = function() {
-		popupService.fail("暂未开发")
+		$state.go("editPwd");
 	};
 }]);

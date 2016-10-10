@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-
+var auth = require("../tools/auth.js");
 var util = require("../tools/mysql-query");
 
 /* login. */
@@ -14,6 +14,7 @@ router.post('/login', function(req, res, next) {
       req.session.userInfo = {
         userId: result[0].id,
         userName: result[0].name,
+        userPwd: result[0].passwd,
         userClass: result[0].class
       };
       res.end(JSON.stringify({
@@ -102,6 +103,59 @@ router.post('/register', function(req, res, next) {
       });
     }
   });
+
+});
+
+router.post('/editpwd', function(req, res, next) {
+  if (!auth.checkAuth(req, res)) {
+    return;
+  }
+  var body = req.body;
+  var oldpwd = body.oldpwd;
+  var newpwd = body.newpwd;
+  var confirmpwd = body.confirmpwd;
+
+  if (!/^[a-zA-Z0-9_!@#$%^&*()-\\+]{6,15}$/.test(newpwd)) {
+    res.end(JSON.stringify({
+      resultCode: "999",
+      msg: "密码不符规范！"
+    }));
+    return;
+  }
+
+  if (newpwd != confirmpwd) {
+    res.end(JSON.stringify({
+      resultCode: "999",
+      msg: "两次输入的密码不一致！"
+    }));
+    return;
+  }
+
+  if(oldpwd != req.session.userInfo.userPwd){
+    res.end(JSON.stringify({
+      resultCode: "999",
+      msg: "您输入的原始密码错误。"
+    }));
+    return;
+  }
+
+  var userId = req.session.userInfo.userId;
+  var post = [newpwd, userId];
+  var sql = 'UPDATE users SET passwd = ? WHERE id = ?';
+
+  util.query(sql, post).then(function(result) {
+    req.session.userInfo.userPwd = newpwd;
+    res.end(JSON.stringify({
+      resultCode: "000",
+      msg: "修改成功！"
+    }));
+  }, function(err) {
+    res.end(JSON.stringify({
+      resultCode: "999",
+      msg: "服务器异常，请稍后再试！"
+    }));
+  });
+
 
 });
 
