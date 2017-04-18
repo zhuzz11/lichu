@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start":"supervisor app"
+    "start":"supervisor -- app -env release",
+    "test": "supervisor -- app -env dev"
   },
   "dependencies": {
     "body-parser": "~1.13.2",

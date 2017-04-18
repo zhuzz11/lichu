@@ -4,7 +4,8 @@
   "description": "app",
   "main": "app.js",
   "scripts": {
-    "test": "test"
+    "start":"supervisor app -v release",
+    "test": "supervisor app -v dev"
   },
   "repository": {
     "type": "git",
