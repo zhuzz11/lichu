@@ -1,15 +1,18 @@
 var mysql = require("mysql");
 
+var config = require("../config.json");//全局变量
+var envConfig = process.argv[3];
 //var connection = require("./mysql-connect");
 var Q = require('q');
 
 var config = {
-	host: "112.74.183.125",
-	port: "3306",
-	user: "zdm",
-	password: "199112",
-	database: "myweb-dev"
+	host: config[envConfig].db.host,
+    port: config[envConfig].db.port,
+	user: config[envConfig].db.user,
+    password: config[envConfig].db.password,
+	database: config[envConfig].db.database
 };
+
 var connection;
 
 function connectHandler() {

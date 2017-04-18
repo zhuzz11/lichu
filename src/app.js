@@ -26,12 +26,15 @@ app.use(cookieParser());
 
 var session = require('express-session');
 var redisStore = require('connect-redis')(session);
+
+var config = require("./config.json");//全局变量
+var envConfig = process.argv[3];//请使用npm start or npm test
+
 app.use(session({
     store: new redisStore({
-        //host: "127.0.0.1",   //生产环境
-        host: "112.74.183.125",   //本地
-        port: 6379,
-        pass: "@&hidshf4534osf!hosfjos6575f98jp",
+        host: config[envConfig].redis.host,
+        port: config[envConfig].redis.port,
+        pass: config[envConfig].redis.pass,
         ttl: 60 * 30 // 秒
     }),
     resave: false,
