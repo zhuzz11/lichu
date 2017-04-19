@@ -1,32 +1,38 @@
-var request = require("./request");
+
+/* 
+ *微信相关操作api 
+ */
+var wechatApi = {};
+
+var utils = require("./http");
 var config = require("../config.json");
+
+var access_url = config.wechat.accessToken_url;
+var ticket_url = config.wechat.ticket_url;
 
 var appid = config.wechat.appid;
 var appSecret = config.wechat.appSecret;
 
-
-var url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=" + appid + "&secret=" + appSecret;
-var accessToken = "meXofTTa7JI4CZFIcsigeWplUC6OKUet5m1sUYi-bHvXJw04qOznpKiGBU-ynB8ClE5Yv5uRAy0E1VsN_KxyuHh9tcDFv5Lm3G3tqsMrpJYeFgdkC3I_MD0oQXela7H9WDRfAEAQXL";
-
-var accessToken = function() {
-    request.sendHttps(url, function(data) {
-        accessToken = JSON.parse(data).access_token;
-    }, function(err) {
-        console.log("fail");
-        console.log(err);
+//获取access_token  
+wechatApi.updateAccessToken = function() {
+    //console.log(url);  
+    var option = {
+        url: access_url.replace("{appid}",appid).replace("{secret}",appSecret),
+        json: true
+    };
+    return utils.request(option).then(function(data) {
+        return Promise.resolve(data);
     });
 };
 
-var url_ticket = "https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=" + accessToken + "&type=jsapi";
-var jsapi_ticket = "";
-
-var ticket = function(){
-	request.sendHttps(url_ticket, function(data) {
-        jsapi_ticket = JSON.parse(data).ticket;
-    }, function(err) {
-        console.log("fail");
-        console.log(err);
+wechatApi.updateAccessTicket = function(access_token) {
+    var option = {
+        url: ticket_url.replace("{access_token}",access_token),
+        json: true
+    };
+    return utils.request(option).then(function(data) {
+        return Promise.resolve(data);
     });
 };
 
-ticket();
+module.exports = wechatApi;
