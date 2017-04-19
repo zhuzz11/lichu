@@ -87,6 +87,14 @@ router.get('/auth', function(req, res, next) {
 	}
 });
 
+/* 微信jssdk授权*/
+router.get('/jssdk/sign', function(req, res, next) {
+	console.log(req.accessTicket);
+	console.log(req.query.url);
+	var ret = wechatApi.sign(req.accessTicket,req.query.url);
+	res.send(ret);
+});
+
 /* 微信测试. */
 router.get('/test', function(req, res, next) {
 	console.log("test page");
