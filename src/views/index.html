@@ -28,18 +28,19 @@
     -->
     <ion-nav-view></ion-nav-view>
   </body>
+  <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
   <script type="text/javascript">
-  var html = document.getElementsByTagName("html")[0];
-  var fontSize = window.innerWidth * 100.0 / 720;
-  html.setAttribute("style","font-size:" + fontSize + "px");
+    var html = document.getElementsByTagName("html")[0];
+    var fontSize = window.innerWidth * 100.0 / 720;
+    html.setAttribute("style","font-size:" + fontSize + "px");
 
-  $.fn.autosize = function(){
-    $(this).height('0px');
-    var setheight = $(this).get(0).scrollHeight;
-    if($(this).attr("_height") != setheight)
-     $(this).height(setheight+"px").attr("_height",setheight);
-    else
-     $(this).height($(this).attr("_height")+"px");
-   }
+    $.fn.autosize = function(){
+      $(this).height('0px');
+      var setheight = $(this).get(0).scrollHeight;
+      if($(this).attr("_height") != setheight)
+       $(this).height(setheight+"px").attr("_height",setheight);
+      else
+       $(this).height($(this).attr("_height")+"px");
+     }
   </script>
 </html>
