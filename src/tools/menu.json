@@ -1,0 +1,29 @@
+{
+    "button": [{
+        "name": "随心记",
+        "sub_button": [{
+            "type": "view",
+            "name": "个人中心",
+            "url": "http://www.aligadodo.com/"
+        }, {
+            "type": "view",
+            "name": "写日记",
+            "url": "http://www.aligadodo.com/"
+        }]
+    }, {
+        "name": "菜单",
+        "sub_button": [{
+            "type": "view",
+            "name": "测试",
+            "url": "http://www.aligadodo.com/wechat-test/test"
+        }, {
+            "type": "view",
+            "name": "腾讯视频",
+            "url": "http://v.qq.com/"
+        }, {
+            "type": "click",
+            "name": "赞一下我们",
+            "key": "V1001_GOOD"
+        }]
+    }]
+}
