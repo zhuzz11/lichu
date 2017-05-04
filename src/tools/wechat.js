@@ -11,7 +11,8 @@ var ticket_url = config.wechat.ticket_url;
 
 var appid = config.wechat.appid;
 var appSecret = config.wechat.appSecret;
-
+var appid_test = config.wechat_test.appid;
+var appSecret_test = config.wechat_test.appSecret;
 
 var createNonceStr = function() {
     return Math.random().toString(36).substr(2, 15);
@@ -65,6 +66,17 @@ wechatApi.updateAccessToken = function() {
     //console.log(url);  
     var option = {
         url: access_url.replace("{appid}", appid).replace("{secret}", appSecret),
+        json: true
+    };
+    return utils.request(option).then(function(data) {
+        return Promise.resolve(data);
+    });
+};
+
+wechatApi.updateTestAccessToken = function() {
+    //console.log(url);  
+    var option = {
+        url: access_url.replace("{appid}", appid_test).replace("{secret}", appSecret_test),
         json: true
     };
     return utils.request(option).then(function(data) {
