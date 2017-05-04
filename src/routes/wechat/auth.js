@@ -87,6 +87,21 @@ router.get('/auth', function(req, res, next) {
 	}
 });
 
+/* 微信验证. */
+router.get('/test', function(req, res, next) {
+	var signature = req.query.signature,
+		timestamp = req.query.timestamp,
+		nonce = req.query.nonce,
+		echostr = req.query.echostr;
+	console.log("token=" + config.wechat.token);
+	console.log(echostr + "---" + timestamp + "---" + nonce + "---" + signature);
+	if (isLegel(signature, timestamp, nonce, config.wechat.token)) {
+		res.send(echostr);
+	} else {
+		res.send("失败");
+	}
+});
+
 /* 微信jssdk授权*/
 router.get('/jssdk/sign', function(req, res, next) {
 	console.log(req.accessTicket);
