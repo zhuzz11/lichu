@@ -46,7 +46,7 @@ var raw = function(args) {
  *
  * @returns
  */
-wechatApi.sign = function(jsapi_ticket, url) {
+wechatApi.sign = function(jsapi_ticket, url, appid) {
     var ret = {
         jsapi_ticket: jsapi_ticket,
         nonceStr: createNonceStr(),

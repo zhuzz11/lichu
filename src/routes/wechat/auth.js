@@ -91,7 +91,7 @@ router.get('/auth', function(req, res, next) {
 router.get('/jssdk/sign', function(req, res, next) {
 	console.log(req.accessTicket);
 	console.log(req.query.url);
-	var ret = wechatApi.sign(req.accessTicket,req.query.url);
+	var ret = wechatApi.sign(req.accessTicket,req.query.url,config.wechat.appid);
 	res.send(ret);
 });
 
