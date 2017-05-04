@@ -14,8 +14,8 @@
         "name": "菜单",
         "sub_button": [{
             "type": "view",
-            "name": "搜索1",
-            "url": "http://www.soso.com/"
+            "name": "测试",
+            "url": "http://www.aligadodo.com/wechat-test/test"
         }, {
             "type": "view",
             "name": "腾讯视频",

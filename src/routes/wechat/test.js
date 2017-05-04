@@ -96,7 +96,7 @@ router.get('/jssdk/sign', function(req, res, next) {
 });
 
 /* 微信测试. */
-router.get('/t', function(req, res, next) {
+router.get('/test', function(req, res, next) {
 	console.log("test page");
 	res.render("test");
 });
