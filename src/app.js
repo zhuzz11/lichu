@@ -9,6 +9,7 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var books = require('./routes/books');
 var wechat = require('./routes/wechat/auth');
+var wechat_test = require('./routes/wechat/test');
 
 var app = express();
 
@@ -52,6 +53,7 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/books', books);
 app.use('/wechat', wechat);
+app.use('/wechat-test', wechat_test);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
