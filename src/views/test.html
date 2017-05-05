@@ -10,8 +10,10 @@
 
 <body>
     <button id="loc">获取地理位置</button>
-    <button id="pic">获取照片</button>
-    <img id="img" src="" styke="width:200px;height:auto;">
+    <button id="pic">获取照片（相册+相机）</button>
+    <button id="pic2">获取照片（相机）</button>
+    <button id="pic3">获取照片（压缩图）</button>
+    <img id="img" src="" style="width:200px;height:auto;">
     <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <script type="text/javascript">
     $.ajax({
@@ -58,6 +60,30 @@
         wx.chooseImage({
             count: 1, // 默认9
             sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+            sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+            success: function(res) {
+                var localIds = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+                $("#img").attr("src",localIds[0]);
+            }
+        });
+    })
+
+    $("#pic2").click(function() {
+        wx.chooseImage({
+            count: 2, // 默认9
+            sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+            sourceType: ['camera'], // 可以指定来源是相册还是相机，默认二者都有
+            success: function(res) {
+                var localIds = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+                $("#img").attr("src",localIds[0]);
+            }
+        });
+    })
+
+    $("#pic3").click(function() {
+        wx.chooseImage({
+            count: 3, // 默认9
+            sizeType: ['compressed'], // 可以指定是原图还是压缩图，默认二者都有
             sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
             success: function(res) {
                 var localIds = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
