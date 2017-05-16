@@ -14,6 +14,8 @@
     <button id="pic2">获取照片（相机）</button>
     <button id="pic3">获取照片（压缩图）</button>
     <img id="img" src="" style="width:200px;height:auto;">
+    <div>以下为base64图片</div>
+    <img id="img2" src="" style="width:200px;height:auto;">
     <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <script type="text/javascript">
     $.ajax({
@@ -43,6 +45,21 @@
             alert("wx ready");
         });
     }
+
+    function getBase64Image(img) {
+      var canvas = document.createElement("canvas");
+      canvas.width = img.width;
+      canvas.height = img.height;
+
+      var ctx = canvas.getContext("2d");
+      ctx.drawImage(img, 0, 0, img.width, img.height);
+
+      var dataURL = canvas.toDataURL("image/png");
+      return dataURL;
+
+      // return dataURL.replace("data:image/png;base64,", "");
+    }
+
     $("#loc").click(function() {
         wx.getLocation({
             type: 'wgs84', // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
@@ -64,6 +81,8 @@
             success: function(res) {
                 var localIds = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
                 $("#img").attr("src",localIds[0]);
+                var data = getBase64Image($("#img")[0]);
+                $("#img2").attr("src",data);
             }
         });
     })
